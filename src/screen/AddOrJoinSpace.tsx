@@ -1,27 +1,18 @@
-import { Tab, Tabs } from "@mui/material";
-import { useState } from "react";
-import PhoneIcon from "@mui/icons-material/Phone";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import PersonPinIcon from "@mui/icons-material/PersonPin";
+import { AddBox, ScreenShare } from "@mui/icons-material";
+import text from "@constant/text";
+import TabsWithIcons from "@component/tab/TabsWithIcons";
 
 const AddOrJoinSpace = () => {
-  const [selectedTab, setSelectedTab] = useState<number>(0);
-
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    event.preventDefault();
-    setSelectedTab(newValue);
-  };
+  const tabs = [{
+    icon: AddBox,
+    ...text.addOrJoinSpace.add
+  }, {
+    icon: ScreenShare,
+    ...text.addOrJoinSpace.join
+  }]
 
   return (
-    <Tabs value={selectedTab} onChange={handleChange} centered>
-      <Tab
-        icon={<PhoneIcon color="secondary" />}
-        aria-label="phone"
-        sx={{ width: "33%" }}
-      />
-      <Tab icon={<FavoriteIcon color="secondary" />} aria-label="favorite" />
-      <Tab icon={<PersonPinIcon color="secondary" />} aria-label="person" />
-    </Tabs>
+    <TabsWithIcons tabs={tabs} iconSelectedColor="white"/>
   );
 };
 
