@@ -5,6 +5,10 @@ const routes: IRoute[] = [{
     path: '/',
     component: lazy(() => import("@screen/HomeScreen")),
     exact: true,
+}, {
+    path: '/create-or-join',
+    component: lazy(() => import("@screen/AddOrJoinSpace")),
+    exact: true,
 }];
 
 

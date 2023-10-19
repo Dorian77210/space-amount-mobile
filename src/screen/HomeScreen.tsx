@@ -1,10 +1,21 @@
 import HomeHeader from "@component/header/HomeHeader";
 import text from "@constant/text";
-import { Box, IconButton, List, ListItem, ListItemText, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+} from "@mui/material";
 import { useState } from "react";
 import { OpenInNew } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 const HomeScreen = () => {
+  const navigate = useNavigate();
+
   const [spaceAmounts] = useState<string[]>([
     "TEST",
     "TEST",
@@ -32,6 +43,10 @@ const HomeScreen = () => {
 
   const handleAccessToSpace = () => {
     console.log("Access to space");
+  };
+
+  const handleCreateOrJoinSpace = () => {
+    navigate('/create-or-join');
   }
 
   return (
@@ -58,8 +73,12 @@ const HomeScreen = () => {
                 <ListItem
                   alignItems="flex-start"
                   secondaryAction={
-                    <IconButton edge="start" aria-label="access" onClick={handleAccessToSpace}>
-                      <OpenInNew color="info" fontSize="large"/>
+                    <IconButton
+                      edge="start"
+                      aria-label="access"
+                      onClick={handleAccessToSpace}
+                    >
+                      <OpenInNew color="info" fontSize="large" />
                     </IconButton>
                   }
                 >
@@ -84,6 +103,19 @@ const HomeScreen = () => {
           })}
         </List>
       </Box>
+      <Button
+        variant="contained"
+        sx={{
+          height: 65,
+          borderRadius: 10,
+          position: 'fixed',
+          bottom: 10,
+          right: 10,
+        }}
+        onClick={handleCreateOrJoinSpace}
+      >
+        <Typography fontSize="20px">+</Typography>
+      </Button>
     </>
   );
 };
