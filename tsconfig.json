@@ -27,6 +27,7 @@
       "@component/*": ["./src/component/*"],
       "@assets/*": ["./src/assets/*"],
       "@constant/*": ["./src/constant/*"],
+      "@hook/*": ["./src/hook/*"],
     }
   },
   "include": ["src"],

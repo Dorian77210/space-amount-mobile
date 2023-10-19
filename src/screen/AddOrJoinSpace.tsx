@@ -9,10 +9,15 @@ const AddOrJoinSpace = () => {
   }, {
     icon: ScreenShare,
     ...text.addOrJoinSpace.join
-  }]
+  }];
+
+  const tabContents = [
+    <div>Test</div>,
+    <div>Another</div>
+  ]
 
   return (
-    <TabsWithIcons tabs={tabs} iconSelectedColor="white"/>
+    <TabsWithIcons tabs={tabs} tabContents={tabContents}/>
   );
 };
 

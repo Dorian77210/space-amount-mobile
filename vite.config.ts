@@ -31,6 +31,9 @@ export default defineConfig({
     }, {
       find: '@constant',
       replacement: path.resolve(__dirname, 'src/constant')
+    }, {
+      find: '@hook',
+      replacement: path.resolve(__dirname, 'src/hook')
     }]
   },
 })
