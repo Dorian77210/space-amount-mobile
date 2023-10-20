@@ -5,7 +5,11 @@ const RouteLoader = ({ children }: { children: ReactNode }) => (
     <Suspense
       fallback={
         <>
-          <CircularProgress />
+          <CircularProgress sx={{
+            position: 'fixed',
+            top: '50%',
+            right: '50%',
+          }} />
         </>
       }
     >

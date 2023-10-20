@@ -95,11 +95,12 @@ const TabsWithIcons = ({
       </Box>
       <Box sx={{
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        flexDirection: "column",
       }}>
         {tabContents.map((tab, index) => {
           return (
-            <Box key={index}>
+            <Box key={index} sx={{ width: '100%' }}>
               <CustomTabPanel value={selectedTab} index={index}>
                 {tab}
               </CustomTabPanel>

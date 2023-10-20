@@ -1,6 +1,7 @@
 import { AddBox, ScreenShare } from "@mui/icons-material";
 import text from "@constant/text";
 import TabsWithIcons from "@component/tab/TabsWithIcons";
+import AddSpaceForm from "@component/AddSpaceForm/AddSpaceForm";
 
 const AddOrJoinSpace = () => {
   const tabs = [{
@@ -12,7 +13,7 @@ const AddOrJoinSpace = () => {
   }];
 
   const tabContents = [
-    <div>Test</div>,
+    <AddSpaceForm />,
     <div>Another</div>
   ]
 
