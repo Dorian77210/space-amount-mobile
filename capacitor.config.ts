@@ -5,7 +5,8 @@ const config: CapacitorConfig = {
   appName: 'space-amount',
   webDir: 'dist',
   server: {
-    androidScheme: 'https'
+    androidScheme: 'http',
+    cleartext: true,
   }
 };
 

@@ -5,11 +5,15 @@ import { Box, Button, MenuItem, Select, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import SendIcon from '@mui/icons-material/Send';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { createSpaceAmount } from "@data/redux/reducer/space-amount.reducer";
+import useUserId from "@hook/useUserId";
+import { useAppDispatch } from "@data/redux/store";
 
 const initialState = {
   name: "",
   description: "",
   currency: "",
+  username: "",
 };
 
 const AddSpaceForm = () => {
@@ -18,11 +22,12 @@ const AddSpaceForm = () => {
     name: false,
     description: false,
     currency: false,
+    username: false,
   });
 
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
-
   const currencies = useCurrency();
+  const dispatch = useAppDispatch();
 
   const handleInput = (value: string, key: keyof typeof initialState) => {
     setForm((prevState) => ({
@@ -36,16 +41,28 @@ const AddSpaceForm = () => {
       name: !form.name,
       description: !form.description,
       currency: !form.currency,
+      username: !form.username
     });
   }, [form]);
 
   useEffect(() => {
-    const disabled = errors.currency || errors.description || errors.currency;
+    const disabled = errors.currency || errors.description || errors.currency || errors.username;
     setIsDisabled(disabled);
   }, [errors]);
 
   const handleClearForm = () => {
     setForm(initialState);
+  }
+
+  const handleSubmit = async () => {
+    const userId = await useUserId();
+    dispatch(createSpaceAmount({
+      description: form.description,
+      name: form.name,
+      username: form.username,
+      currency: form.currency,
+      userId
+    }));
   }
 
   return (
@@ -114,12 +131,24 @@ const AddSpaceForm = () => {
         </Select>
       </Box>
 
+      <Box sx={{ display: "flex" }} flexDirection="column" mb={3}>
+        <Typography variant="caption">
+          {text.addOrJoinSpace.form.username.caption}
+        </Typography>
+        <WhiteTextField
+          label={text.addOrJoinSpace.form.username.label}
+          onChange={(ev) => handleInput(ev.target.value, "username")}
+          value={form.username}
+        />
+      </Box>
+
       <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
           <Button
             variant="contained"
             startIcon={<SendIcon />}
             disabled={isDisabled}
             color="primary"
+            onClick={handleSubmit}
           >
             { text.addOrJoinSpace.form.buttons.submit }
           </Button>

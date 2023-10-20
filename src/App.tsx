@@ -3,6 +3,8 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import useUserId from "@hook/useUserId";
 import UserContext from "@data/context/UserContext";
+import { Provider } from "react-redux";
+import { store } from "@data/redux/store";
 
 function App() {
   const [userId, setUserId] = useState<string>("");
@@ -15,9 +17,11 @@ function App() {
     <>
       {userId && (
         <UserContext.Provider value={userId}>
-          <div>
-            <Router />
-          </div>
+          <Provider store={store}>
+            <div>
+              <Router />
+            </div>
+          </Provider>
         </UserContext.Provider>
       )}
     </>

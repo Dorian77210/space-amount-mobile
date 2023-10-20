@@ -28,6 +28,10 @@ export default {
         submit: "Créer",
         clear: "Réinitialiser",
       },
+      username: {
+        label: 'Votre nom',
+        caption: 'Votre nom'
+      }
     },
   },
 };
