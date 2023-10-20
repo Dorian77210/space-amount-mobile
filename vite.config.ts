@@ -34,6 +34,12 @@ export default defineConfig({
     }, {
       find: '@hook',
       replacement: path.resolve(__dirname, 'src/hook')
+    }, {
+      find: '@helper',
+      replacement: path.resolve(__dirname, 'src/helper')
+    }, {
+      find: '@data',
+      replacement: path.resolve(__dirname, 'src/data')
     }]
   },
 })

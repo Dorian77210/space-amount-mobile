@@ -28,6 +28,7 @@
       "@assets/*": ["./src/assets/*"],
       "@constant/*": ["./src/constant/*"],
       "@hook/*": ["./src/hook/*"],
+      "@helper/*": ["./src/helper/*"],
     }
   },
   "include": ["src"],
